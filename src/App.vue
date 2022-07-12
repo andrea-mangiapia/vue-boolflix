@@ -1,28 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <AmHeader @toSearch="SearchText"/>
+    
+    <AmMain :filmlist="filmList"/>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AmHeader from "./components/AmHeader.vue";
+import  AmMain  from "./components/AmMain.vue";
+import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    AmHeader,
+    AmMain
+  },
+
+  data() {
+    return {
+      url:"https://api.themoviedb.org/3/search/movie?api_key=46cb34a5ad0781124c39c2a133f7475b&language=en-US",
+      filmList: []
+    }
+  },
+  methods: {
+  getFilmApi(userText) {
+    axios.get(`${this.url}&query=${userText}`)
+    .then((response) => {
+      this.filmList = response.data.results;
+    });
+  },
+
+  SearchText(userText) {
+    this.getFilmApi(userText);
+    }
+  },
+  
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/style/common.scss';
+
 </style>
