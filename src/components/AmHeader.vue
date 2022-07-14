@@ -1,9 +1,7 @@
 <template>
     <header>
         <div>
-            <h1>
-                BOOLFLIX
-            </h1>
+            <img src="../assets/logo.png" alt="Logo Boolflix">
         </div>
         
         <div>
@@ -28,17 +26,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/style/variables.scss';
+
 header {
     background-color: black;
     color: red;
-    height: 60px;
+    height: $header_height;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
 
-    h1 {
-        font-size: 20px;
+    img {
+        width: 100px;
     }
 }
 </style>
