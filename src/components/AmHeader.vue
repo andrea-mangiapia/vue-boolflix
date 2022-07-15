@@ -40,5 +40,25 @@ header {
     img {
         width: 100px;
     }
+
+    input {
+        font-size: 14px;
+        padding: 0 7px;
+        height: 30px;
+        border: 1px solid red;
+        margin-right: 1px;
+    }
+    button {
+        background-color: red;
+        color: white;
+        height: 30px;
+        border: 1px solid red;
+        padding: 0px 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: hsla(0, 100%, 50%, 0.7);
+        }
+    }
 }
 </style>
