@@ -2,6 +2,7 @@
     <main>
         <!-- Section Film -->
         <section class="film">
+            <h2>Film</h2>
             <ul>
                 <li v-for="(film, index) in filmlist" :key="index">                 
                     <div class="card">
@@ -22,8 +23,8 @@
                             </div>
                             <div><strong>Voto:</strong> {{film.vote_average}}</div>
                             <div><strong>Media Voto:</strong> {{getStars(film.vote_average)}}
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                                <i v-for="n in getStars(film.vote_average)" :key="n" class="fa-solid fa-star"></i>
+                                <i v-for="n in 5 - getStars(film.vote_average)" :key="n" class="fa-regular fa-star"></i>
                             </div>
                         </div>
                     </div>
@@ -33,6 +34,7 @@
 
         <!-- Section Serie -->
         <section class="serie">
+            <h2>Serie TV</h2>
             <ul>
                 <li v-for="(serie, index) in serielist" :key="index">
                     <div class="card">
@@ -54,8 +56,8 @@
                             <div><strong>Voto:</strong> {{serie.vote_average}}</div>
                             <div><strong>Media Voto:</strong>
                                 {{getStars(serie.vote_average)}}
-                                <i class="fas fa-star"></i> 
-                                <i class="far fa-star"></i>
+                                <i v-for="n in getStars(serie.vote_average)" :key="n" class="fas fa-star"></i> 
+                                <i v-for="n in 5 - getStars(serie.vote_average)" :key="n" class="far fa-star"></i>
                             </div>
                         </div>
                     </div>
@@ -91,12 +93,12 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/style/variables.scss';
 
-main {
-    background-color: #3d3d3d;
-}
-
 section {
     padding: 20px 10px;
+
+    h2 {
+        color: white;
+    }
 
     ul {
         display: flex;
@@ -139,6 +141,10 @@ section {
 
         .flag {
         width: 25px;
+        }
+
+        i {
+            color: yellow;
         }
         
     }
