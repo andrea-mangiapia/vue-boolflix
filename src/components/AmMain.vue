@@ -1,7 +1,7 @@
 <template>
     <main>
         <!-- Section Film -->
-        <section class="film">
+        <section class="film" v-if="filmlist.length > 0">
             <h2>Film</h2>
             <ul>
                 <li v-for="(film, index) in filmlist" :key="index">                 
@@ -32,8 +32,10 @@
             </ul>
         </section>
 
+        <hr>
+
         <!-- Section Serie -->
-        <section class="serie">
+        <section class="serie" v-if="serielist.length > 0">
             <h2>Serie TV</h2>
             <ul>
                 <li v-for="(serie, index) in serielist" :key="index">
@@ -86,7 +88,11 @@ export default {
 
         }     
     },
-    props: ['filmlist','serielist']
+    props: {
+        filmlist: Array,
+        serielist: Array,
+    },
+    // ['filmlist','serielist']
 }
 </script>
 
@@ -94,10 +100,12 @@ export default {
 @import '../assets/style/variables.scss';
 
 section {
-    padding: 20px 10px;
+    padding: 20px;
 
     h2 {
         color: white;
+        font-size: 28px;
+        padding-bottom: 20px;
     }
 
     ul {
